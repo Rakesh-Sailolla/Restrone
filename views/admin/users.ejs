@@ -1,0 +1,68 @@
+<% layout("layouts/boilerplate") %>
+
+<div class="p-6">
+
+  <h2 class="text-2xl font-bold mb-6"> Users Management</h2>
+
+  <div class="overflow-x-auto bg-white rounded-xl shadow">
+
+    <table class="min-w-full text-sm text-left border-collapse">
+
+      <thead class="bg-gray-100 text-gray-700">
+        <tr>
+          <th class="px-6 py-3 border">#</th>
+          <th class="px-6 py-3 border">Username</th>
+          <th class="px-6 py-3 border">Email</th>
+          <th class="px-6 py-3 border">Mobile</th>
+          <th class="px-6 py-3 border">Role</th>
+          <th class="px-6 py-3 border">Joined</th>
+        </tr>
+      </thead>
+
+      <tbody>
+
+        <% users.forEach((user, index) => { %>
+
+        <tr class="hover:bg-gray-50">
+
+          <td class="px-6 py-3 border"><%= index + 1 %></td>
+
+          <td class="px-6 py-3 border font-medium">
+            <%= user.username %>
+          </td>
+
+          <td class="px-6 py-3 border">
+            <%= user.email %>
+          </td>
+
+          <td class="px-6 py-3 border">
+            <%= user.mobile %>
+          </td>
+
+          <td class="px-6 py-3 border">
+            <% if (user.role === "admin") { %>
+              <span class="px-2 py-1 text-xs rounded bg-blue-100 text-blue-700">
+                Admin
+              </span>
+            <% } else { %>
+              <span class="px-2 py-1 text-xs rounded bg-green-100 text-green-700">
+                User
+              </span>
+            <% } %>
+          </td>
+
+          <td class="px-6 py-3 border text-gray-500">
+            <%= user.createdAt?.toDateString() || "-" %>
+          </td>
+
+        </tr>
+
+        <% }) %>
+
+      </tbody>
+
+    </table>
+
+  </div>
+
+</div>

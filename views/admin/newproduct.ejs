@@ -1,0 +1,99 @@
+<% layout("layouts/boilerplate") %>
+
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-7 col-lg-6">
+      <div class="card shadow-lg border-0 rounded-4">
+        <div class="card-body p-4">
+
+          <h3 class="text-center mb-4 fw-bold">
+             Create New Food Item
+          </h3>
+
+          <form
+            method="POST"
+            action="/admin/products"
+            enctype="multipart/form-data"
+          >
+
+            <!-- Food Name -->
+            <div class="mb-3">
+              <label class="form-label fw-semibold">Food Name</label>
+              <input
+                type="text"
+                name="foodname"
+                class="form-control"
+                placeholder="Enter food item name"
+                required
+              />
+            </div>
+
+            <!-- Description -->
+            <div class="mb-3">
+              <label class="form-label fw-semibold">Description</label>
+              <input
+                type="text"
+                name="description"
+                class="form-control"
+                placeholder="Enter description"
+                required
+              />
+            </div>
+
+            <!-- Price -->
+            <div class="mb-3">
+              <label class="form-label fw-semibold">Price (₹)</label>
+              <input
+                type="number"
+                name="price"
+                class="form-control"
+                placeholder="Enter price"
+                min="1"
+                required
+              />
+            </div>
+
+            <!-- Category -->
+            <div class="mb-3">
+              <label class="form-label fw-semibold">Category</label>
+              <select name="category" class="form-select" required>
+                <option value="">-- Select Category --</option>
+                <option value="veg"> Veg</option>
+                <option value="nonveg"> Non-Veg</option>
+                <option value="drinks">Drinks</option>
+                <option value="dessert"> Dessert</option>
+              </select>
+            </div>
+
+            <!-- IMAGE UPLOAD -->
+            <div class="mb-4">
+              <label class="form-label fw-semibold">
+                Upload Image
+              </label>
+              <input
+                type="file"
+                name="image"
+                accept="image/*"
+                class="form-control"
+                required
+              />
+            </div>
+
+            <!-- Buttons -->
+            <div class="d-grid gap-2">
+              <button class="btn btn-primary fw-semibold">
+                 Add Item
+              </button>
+
+              <a href="/admin/products" class="btn btn-outline-secondary">
+                Cancel
+              </a>
+            </div>
+
+          </form>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

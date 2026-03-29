@@ -1,0 +1,16 @@
+.location-hero {
+  background: linear-gradient(135deg, #ffb703, #ff8800);
+  padding: 120px 20px;
+}
+
+.location-hero h1 {
+  font-size: 3rem;
+}
+
+.location-card {
+  background: #fff;
+  padding: 25px;
+  border-radius: 16px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+  height: 100%;
+}

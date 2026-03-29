@@ -1,0 +1,95 @@
+<% layout("layouts/boilerplate") %>
+
+<body class="bg-light">
+
+<div class="container d-flex align-items-center justify-content-center min-vh-100">
+
+  <div class="row w-100 justify-content-center">
+    <div class="col-lg-5 col-md-7">
+
+      <div class="card border-0 shadow-lg p-4 rounded-4">
+
+        <!-- TITLE -->
+        <div class="text-center mb-4">
+          <h2 class="fw-bold">Create Account</h2>
+          <p class="text-muted small">Join RestroOne and enjoy delicious food</p>
+        </div>
+
+        <!-- FLASH -->
+        <% if (error && error.length > 0) { %>
+          <div class="alert alert-danger"><%= error %></div>
+        <% } %>
+
+        <% if (success && success.length > 0) { %>
+          <div class="alert alert-success"><%= success %></div>
+        <% } %>
+
+        <form action="/register" method="POST" onsubmit="return validateForm()">
+
+          <!-- USERNAME -->
+          <div class="form-floating mb-3">
+            <input type="text" name="username" class="form-control" placeholder="Username" required>
+            <label>Username</label>
+          </div>
+
+          <!-- MOBILE -->
+          <div class="form-floating mb-3">
+            <input type="tel" name="mobile" class="form-control"
+                   placeholder="Mobile Number"
+                   pattern="[0-9]{10}" maxlength="10" required>
+            <label>Mobile Number</label>
+          </div>
+
+          <!-- EMAIL -->
+          <div class="form-floating mb-3">
+            <input type="email" name="email" class="form-control" placeholder="Email" required>
+            <label>Email address</label>
+          </div>
+
+          <!-- PASSWORD -->
+          <div class="form-floating mb-3">
+            <input type="password" id="password" name="password" class="form-control" placeholder="Password" required>
+            <label>Password</label>
+          </div>
+
+          <!-- CONFIRM PASSWORD -->
+          <div class="form-floating mb-3">
+            <input type="password" id="confirmPassword" name="confirmPassword"
+                   class="form-control" placeholder="Confirm Password" required>
+            <label>Confirm Password</label>
+          </div>
+
+          <!-- BUTTON -->
+          <button class="btn btn-warning w-100 fw-semibold py-2">
+            Create Account
+          </button>
+
+        </form>
+
+        <!-- LOGIN LINK -->
+        <p class="text-center mt-3 mb-0">
+          Already have an account?
+          <a href="/login" class="fw-semibold text-decoration-none">Login</a>
+        </p>
+
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+<script>
+function validateForm() {
+  const pass = document.getElementById("password").value;
+  const confirm = document.getElementById("confirmPassword").value;
+
+  if (pass !== confirm) {
+    alert("Passwords do not match");
+    return false;
+  }
+  return true;
+}
+</script>
+
+</body>

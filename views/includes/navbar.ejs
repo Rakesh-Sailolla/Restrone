@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Responsive Navbar</title>
+  <style>
+  ul { list-style: none; padding: 0; margin: 0; }
+  .logo {
+  font-size: 26px;
+  font-weight: 800;
+  margin-bottom: 10px;
+}
+ .logo span {
+  color: #ffc107;
+}
+</style>
+
+<!-- Tailwind -->
+<link rel="stylesheet" href="/css/tailwind.css">
+
+<!-- Bootstrap -->
+
+</head>
+
+<body class="bg-gray-100">
+<header class="flex border-b border-gray-300 bg-white min-h-[70px] tracking-wide relative z-50">
+      <div class="px-4 py-3 w-full flex items-center">
+        <div class="flex flex-wrap items-center justify-between sm:px-10  gap-4 w-full max-w-screen-xl mx-auto">
+
+          <!-- logo -->
+<!-- Desktop -->
+<a href="/products"
+   class="max-sm:hidden text-2xl font-extrabold tracking-wide">
+    <h3 class="logo">
+        <span>Restr</span>One
+      </h3>
+</a>
+
+<!-- Mobile -->
+<a href="/products" class="d-block d-sm-none text-decoration-none">
+  <span class="logo1 fw-bold fs-4">
+    <span class="text-warning">Restro</span><span class="text-dark">One</span>
+  </span>
+</a>
+
+
+
+          
+<!-- collapseMenu -->
+          <div id="collapseMenu"
+            class="max-lg:hidden lg:!block max-lg:before:fixed max-lg:before:bg-black max-lg:before:opacity-50 max-lg:before:inset-0 max-lg:before:z-50">
+            <button id="toggleClose" class="lg:hidden fixed top-2 right-4 z-[100] rounded-full bg-white w-9 h-9 flex items-center justify-center border border-gray-200 cursor-pointer">
+                
+              <path
+                  d="M30.391 318.583a30.37 30.37 0 0 1-21.56-7.288c-11.774-11.844-11.774-30.973 0-42.817L266.643 10.665c12.246-11.459 31.462-10.822 42.921 1.424 10.362 11.074 10.966 28.095 1.414 39.875L51.647 311.295a30.366 30.366 0 0 1-21.256 7.288z"
+                  data-original="#000000"></path>
+                <path
+                  d="M287.9 318.583a30.37 30.37 0 0 1-21.257-8.806L8.83 51.963C-2.078 39.225-.595 20.055 12.143 9.146c11.369-9.736 28.136-9.736 39.504 0l259.331 257.813c12.243 11.462 12.876 30.679 1.414 42.922-.456.487-.927.958-1.414 1.414a30.368 30.368 0 0 1-23.078 7.288z"
+                  data-original="#000000"></path>
+              </svg>
+            </button>
+
+            <ul
+              class="lg:flex lg:gap-x-10 max-lg:space-y-3 max-lg:fixed max-lg:bg-white max-lg:w-1/2 max-lg:min-w-[300px] max-lg:top-0 max-lg:left-0 max-lg:p-6 max-lg:h-full max-lg:shadow-md max-lg:overflow-auto z-50">
+              <li class="mb-6 hidden max-lg:block">
+                <a href="/products">
+                   <h3 class="logo">
+             <span>Restro</span>One
+      </h3>
+                </a>
+              </li>
+            
+                <li class="max-lg:border-b max-lg:border-gray-300 max-lg:py-3"><a href='/products'
+                class="hover:text-blue-700 text-gray-600 text-[15px] font-semibold block">Home</a></li>
+
+                 <li class="max-lg:border-b max-lg:border-gray-300 max-lg:py-3"><a href='/products'
+                class="hover:text-blue-700 text-gray-600 text-[15px] font-semibold block">Menu</a></li>
+
+              <li class="max-lg:border-b max-lg:border-gray-300 max-lg:py-3"><a href='/about'
+                class="hover:text-blue-700 text-gray-600 text-[15px] font-semibold block">About</a></li>
+
+              <li class="max-lg:border-b max-lg:border-gray-300 max-lg:py-3"><a href='/contact'
+                class="hover:text-blue-700 text-gray-600 text-[15px] font-semibold block">Contact</a></li>
+              <li class="max-lg:border-b max-lg:border-gray-300 max-lg:py-3"><a href='/locations'
+                class="hover:text-blue-700 text-gray-600 text-[15px] font-semibold block">Locations</a></li>
+
+
+            </ul>
+          </div>
+
+          <div class="flex items-center space-x-8 max-lg:ml-auto">
+ <span class="relative inline-block">
+
+  <!-- SAME USER ICON -->
+  <svg
+    id="userIcon"
+    xmlns="http://www.w3.org/2000/svg"
+    width="20px"
+    class="cursor-pointer fill-[#333] hover:fill-blue-700 inline"
+    viewBox="0 0 64 64"
+  >
+    <path
+      d="M32 34c7.18 0 13-5.82 13-13S39.18 8 32 8
+         19 13.82 19 21s5.82 13 13 13Zm0-22
+         a9 9 0 1 1 0 18
+         9 9 0 0 1 0-18Zm0 24
+         c-10.49 0-19 5.38-19 12
+         v4h4v-4
+         c0-4.19 6.72-8 15-8
+         s15 3.81 15 8v4h4v-4
+         c0-6.62-8.51-12-19-12Z"
+    />
+  </svg>
+
+  <!-- BADGE -->
+  <!-- <span
+    class="absolute -ml-1 top-0 rounded-full bg-blue-600 px-1 text-xs text-white"
+  >
+    0
+  </span> -->
+
+  <!-- DROPDOWN LIST -->
+<ul
+  id="userDropdown"
+  class="hidden absolute right-0 mt-2 w-60 max-w-[92vw]
+         bg-white border border-gray-200
+         rounded-lg text-sm z-50 overflow-hidden
+         list-dropdown">
+
+<% if (!currentUser) { %>
+
+  <!-- GUEST -->
+  <li>
+    <a href="/login">
+       Login
+    </a>
+  </li>
+
+  <li>
+    <a href="/register">
+      Signup
+    </a>
+  </li>
+
+<% } else { %>
+
+  <!-- USER HEADER -->
+  <li class="user-header">
+    <p class="username"><%= currentUser.username %></p>
+    <p class="email"><%= currentUser.email %></p>
+  </li>
+
+  <% if (currentUser.role === "admin") { %>
+
+    <li>
+      <a href="/profile">
+         My Profile
+      </a>
+    </li>
+
+    <li>
+      <a href="/admin" class="admin">
+        Admin Dashboard
+      </a>
+    </li>
+
+    <li>
+      <a href="/logout" class="logout">
+         Logout
+      </a>
+    </li>
+
+  <% } else { %>
+
+    <li>
+      <a href="/profile">
+         My Profile
+      </a>
+    </li>
+
+    <li>
+      <a href="/orders/my">
+        My Orders
+      </a>
+    </li>
+
+    <li>
+      <a href="/logout" class="logout">
+         Logout
+      </a>
+    </li>
+
+  <% } %>
+
+<% } %>
+
+</ul>
+
+
+</span>
+
+
+
+            
+            <!-- <span class="relative">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20px"
+                class="cursor-pointer fill-[#333] hover:fill-blue-700 inline" viewBox="0 0 64 64">
+                <path
+                  d="M45.5 4A18.53 18.53 0 0 0 32 9.86 18.5 18.5 0 0 0 0 22.5C0 40.92 29.71 59 31 59.71a2 2 0 0 0 2.06 0C34.29 59 64 40.92 64 22.5A18.52 18.52 0 0 0 45.5 4ZM32 55.64C26.83 52.34 4 36.92 4 22.5a14.5 14.5 0 0 1 26.36-8.33 2 2 0 0 0 3.27 0A14.5 14.5 0 0 1 60 22.5c0 14.41-22.83 29.83-28 33.14Z"
+                  data-original="#000000" />
+              </svg>
+              <span class="absolute left-auto -ml-1 top-0 rounded-full bg-blue-600 px-1 py-0 text-xs text-white">0</span>
+            </span> -->
+
+            <span class="relative">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px"
+                  onclick="openCart()"
+
+                class="cursor-pointer fill-[#333] hover:fill-blue-700 inline" viewBox="0 0 512 512">
+                <path
+                  d="M164.96 300.004h.024c.02 0 .04-.004.059-.004H437a15.003 15.003 0 0 0 14.422-10.879l60-210a15.003 15.003 0 0 0-2.445-13.152A15.006 15.006 0 0 0 497 60H130.367l-10.722-48.254A15.003 15.003 0 0 0 105 0H15C6.715 0 0 6.715 0 15s6.715 15 15 15h77.969c1.898 8.55 51.312 230.918 54.156 243.71C131.184 280.64 120 296.536 120 315c0 24.812 20.188 45 45 45h272c8.285 0 15-6.715 15-15s-6.715-15-15-15H165c-8.27 0-15-6.73-15-15 0-8.258 6.707-14.977 14.96-14.996zM477.114 90l-51.43 180H177.032l-40-180zM150 405c0 24.813 20.188 45 45 45s45-20.188 45-45-20.188-45-45-45-45 20.188-45 45zm45-15c8.27 0 15 6.73 15 15s-6.73 15-15 15-15-6.73-15-15 6.73-15 15-15zm167 15c0 24.813 20.188 45 45 45s45-20.188 45-45-20.188-45-45-45-45 20.188-45 45zm45-15c8.27 0 15 6.73 15 15s-6.73 15-15 15-15-6.73-15-15 6.73-15 15-15zm0 0"
+                  data-original="#000000"></path>
+              </svg>
+              <!-- /// -->
+<span id="cart-count"
+      class="absolute left-auto -ml-1 top-0 rounded-full px-1 py-0 text-xs"
+      style="background-color: #ffb703; color: black;">
+  0
+</span>
+            </span>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192.904 192.904" width="20px"
+              class="cursor-pointer fill-[#333] hover:fill-blue-700">
+              <path
+                d="m190.707 180.101-47.078-47.077c11.702-14.072 18.752-32.142 18.752-51.831C162.381 36.423 125.959 0 81.191 0 36.422 0 0 36.423 0 81.193c0 44.767 36.422 81.187 81.191 81.187 19.688 0 37.759-7.049 51.831-18.751l47.079 47.078a7.474 7.474 0 0 0 5.303 2.197 7.498 7.498 0 0 0 5.303-12.803zM15 81.193C15 44.694 44.693 15 81.191 15c36.497 0 66.189 29.694 66.189 66.193 0 36.496-29.692 66.187-66.189 66.187C44.693 147.38 15 117.689 15 81.193z">
+              </path>
+            </svg>
+
+            <button id="toggleOpen" class="lg:hidden cursor-pointer">
+              <svg class="w-7 h-7" fill="#000" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd"
+                  d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
+                  clip-rule="evenodd"></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+<!-- //// -->
+ <div id="searchOverlay" class="hidden absolute inset-0 bg-white z-[60] px-4 py-3 flex items-center justify-center border-b border-gray-300">
+  <div class="w-full max-w-screen-xl mx-auto flex items-center gap-4">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" width="20px" class="fill-gray-400" viewBox="0 0 192.904 192.904">
+      <path d="m190.707 180.101-47.078-47.077c11.702-14.072 18.752-32.142 18.752-51.831C162.381 36.423 125.959 0 81.191 0 36.422 0 0 36.423 0 81.193c0 44.767 36.422 81.187 81.191 81.187 19.688 0 37.759-7.049 51.831-18.751l47.079 47.078a7.474 7.474 0 0 0 5.303 2.197 7.498 7.498 0 0 0 5.303-12.803zM15 81.193C15 44.694 44.693 15 81.191 15c36.497 0 66.189 29.694 66.189 66.193 0 36.496-29.692 66.187-66.189 66.187C44.693 147.38 15 117.689 15 81.193z"></path>
+    </svg>
+
+    <input 
+      type="text" 
+      id="fullSearchInput" 
+      placeholder="Search for food, restaurants, or cuisines..." 
+      class="w-full bg-transparent outline-none text-lg text-gray-800 font-medium"
+    />
+
+    <button id="closeSearch" class="p-2 hover:bg-gray-100 rounded-full transition-colors">
+      <svg xmlns="http://www.w3.org/2000/svg" width="18px" height="18px" viewBox="0 0 320.591 320.591">
+        <path d="M30.391 318.583a30.37 30.37 0 0 1-21.56-7.288c-11.774-11.844-11.774-30.973 0-42.817L266.643 10.665c12.246-11.459 31.462-10.822 42.921 1.424 10.362 11.074 10.966 28.095 1.414 39.875L51.647 311.295a30.366 30.366 0 0 1-21.256 7.288z"></path>
+        <path d="M287.9 318.583a30.37 30.37 0 0 1-21.257-8.806L8.83 51.963C-2.078 39.225-.595 20.055 12.143 9.146c11.369-9.736 28.136-9.736 39.504 0l259.331 257.813c12.243 11.462 12.876 30.679 1.414 42.922-.456.487-.927.958-1.414 1.414a30.368 30.368 0 0 1-23.078 7.288z"></path>
+      </svg>
+    </button>
+  </div>
+  <div id="searchResults" class="hidden absolute left-0 right-0 top-[70px] bg-white border-b border-gray-300 shadow-2xl max-h-[70vh] overflow-y-auto">
+  <div id="resultsList" class="max-w-screen-xl mx-auto px-4 sm:px-10 py-4 grid grid-cols-1 gap-2">
+    </div>
+</div>
+</div>
+
+
+
+    </header>
+
+
+<!-- JAVASCRIPT -->
+<!-- <script>
+  document.addEventListener("DOMContentLoaded", () => {
+  // Give your original search icon an ID like id="searchTrigger"
+  const searchTrigger = document.querySelector('svg[viewBox="0 0 192.904 192.904"]'); 
+  const searchOverlay = document.getElementById("searchOverlay");
+  const closeSearch = document.getElementById("closeSearch");
+  const searchInput = document.getElementById("fullSearchInput");
+
+  // Open Search
+  searchTrigger?.addEventListener("click", () => {
+    searchOverlay.classList.remove("hidden");
+    // Add a slight delay to allow the "hidden" removal before focusing
+    setTimeout(() => searchInput.focus(), 50);
+  });
+
+  // Close Search
+  closeSearch?.addEventListener("click", () => {
+    searchOverlay.classList.add("hidden");
+    searchInput.value = ""; // Optional: Clear search on close
+  });
+
+  // Close search with 'Escape' key
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && !searchOverlay.classList.contains("hidden")) {
+      searchOverlay.classList.add("hidden");
+    }
+  });
+});
+</script> -->
+<!--search bar-->
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const searchTrigger = document.querySelector('svg[viewBox="0 0 192.904 192.904"]'); 
+  const searchOverlay = document.getElementById("searchOverlay");
+  const closeSearch = document.getElementById("closeSearch");
+  const searchInput = document.getElementById("fullSearchInput");
+  const resultsBox = document.getElementById("searchResults");
+  const resultsList = document.getElementById("resultsList");
+  let debounceTimer;
+
+  // --- OVERLAY CONTROL ---
+  const openOverlay = () => {
+    searchOverlay.classList.remove("hidden");
+    setTimeout(() => searchInput.focus(), 50);
+  };
+
+  const closeOverlay = () => {
+    searchOverlay.classList.add("hidden");
+    resultsBox.classList.add("hidden");
+    searchInput.value = ""; 
+  };
+
+  searchTrigger?.addEventListener("click", openOverlay);
+  closeSearch?.addEventListener("click", closeOverlay);
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && !searchOverlay.classList.contains("hidden")) closeOverlay();
+  });
+
+  // --- LIVE SEARCH LOGIC ---
+  searchInput?.addEventListener("input", (e) => {
+    const query = e.target.value.trim();
+    clearTimeout(debounceTimer);
+
+    if (query.length < 2) {
+      resultsBox.classList.add("hidden");
+      return;
+    }
+
+    // Add a visual "Loading" state (optional hint)
+    searchInput.classList.add("opacity-50");
+
+    debounceTimer = setTimeout(async () => {
+      try {
+        const response = await fetch(`/api/search?q=${encodeURIComponent(query)}`);
+        const data = await response.json();
+        renderLiveResults(data);
+      } catch (err) {
+        console.error("Search fetch error:", err);
+      } finally {
+        searchInput.classList.remove("opacity-50");
+      }
+    }, 300);
+  });
+
+  function renderLiveResults(items) {
+    resultsList.innerHTML = "";
+    
+    if (items.length === 0) {
+      resultsList.innerHTML = `
+        <div class="p-8 text-center">
+          <p class="text-gray-400 text-lg">No matches found for "${searchInput.value}"</p>
+          <p class="text-gray-400 text-sm">Try searching for 'veg', 'drinks', or a specific dish.</p>
+        </div>`;
+    } else {
+      items.forEach(item => {
+        const row = document.createElement("a");
+        row.href = `/products/${item._id}`; 
+        row.className = "flex items-center gap-4 p-4 hover:bg-blue-50 transition-colors rounded-xl border-b border-gray-100 last:border-0";
+        
+        // Use placeholder if image is missing
+        const imgSrc = item.image || 'https://via.placeholder.com/100?text=Food';
+
+        row.innerHTML = `
+          <img src="${imgSrc}" class="w-16 h-16 rounded-lg object-cover shadow-sm" alt="${item.foodname}" onerror="this.src='https://via.placeholder.com/100?text=Food'">
+          <div class="flex-1">
+            <h4 class="font-bold text-gray-900 leading-tight text-base">${item.foodname}</h4>
+            <div class="flex items-center gap-2 mt-1">
+               <span class="px-2 py-0.5 rounded text-[10px] uppercase font-bold ${item.category === 'veg' ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}">
+                ${item.category}
+              </span>
+              <span class="text-xs text-gray-400">Available</span>
+            </div>
+          </div>
+          <div class="text-right">
+            <p class="font-extrabold text-blue-600 text-lg">₹${item.price}</p>
+          </div>
+        `;
+        resultsList.appendChild(row);
+      });
+    }
+    resultsBox.classList.remove("hidden");
+  }
+});
+</script>
+
+
+
+<!--user-->
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+
+  const icon = document.getElementById("userIcon");
+  const dropdown = document.getElementById("userDropdown");
+
+  if (!icon || !dropdown) return;
+
+  icon.addEventListener("click", (e) => {
+    e.stopPropagation();
+    dropdown.classList.toggle("hidden");
+  });
+
+  document.addEventListener("click", (e) => {
+    if (!dropdown.contains(e.target) && e.target !== icon) {
+      dropdown.classList.add("hidden");
+    }
+  });
+
+});
+</script>
+<!--cart-->
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+
+  const badge = document.getElementById("cart-count");
+  if (!badge) return;
+
+  const cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+  let totalQty = 0;
+  cart.forEach(item => totalQty += item.qty);
+
+  badge.innerText = totalQty;
+  badge.classList.toggle("hidden", totalQty === 0);
+
+});
+</script>
+<script>
+  var toggleOpen = document.getElementById('toggleOpen');
+var toggleClose = document.getElementById('toggleClose');
+var collapseMenu = document.getElementById('collapseMenu');
+
+function handleClick() {
+  if (collapseMenu.style.display === 'block') {
+    collapseMenu.style.display = 'none';
+  } else {
+    collapseMenu.style.display = 'block';
+  }
+}
+
+toggleOpen.addEventListener('click', handleClick);
+toggleClose.addEventListener('click', handleClick);
+</script>
+
+</body>
+</html>

@@ -1,0 +1,143 @@
+<!-- ================= CART DRAWER ================= -->
+
+<div class="cart-drawer">
+  <div class="cart-header">
+    <h5>My Cart</h5>
+    <span class="close-btn" onclick="closeCart()">✕</span>
+  </div>
+
+  <div class="cart-body"></div>
+
+  <div class="cart-footer">
+    <div class="total">
+      <span>Total</span>
+      <strong>₹0</strong>
+    </div>
+    <button class="checkout-btn" onclick="goToCheckout()">
+      Checkout
+    </button>
+  </div>
+
+</div>
+
+
+<script>
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+/* ================= ADD TO CART ================= */
+function addToCart(id, name, price, image, quantity = 1) {
+
+  price = Number(price);
+  quantity = Number(quantity);
+
+  const item = cart.find(i => i.id === id);
+
+  if (item) {
+    item.qty += quantity;       //  add selected quantity
+  } else {
+    cart.push({
+      id,
+      name,
+      price,
+      image,
+      qty: quantity
+    });
+  }
+
+  saveCart();
+  openCart();
+}
+
+/* ================= CHANGE CART QTY ================= */
+function changeQty(id, val) {
+  const item = cart.find(i => i.id === id);
+  if (!item) return;
+
+  item.qty += val;
+
+  if (item.qty <= 0) {
+    cart = cart.filter(i => i.id !== id);
+  }
+
+  saveCart();
+}
+
+/* ================= SAVE ================= */
+function saveCart() {
+  localStorage.setItem("cart", JSON.stringify(cart));
+  renderCart();
+  updateCartBadge();
+}
+
+/* ================= RENDER ================= */
+function renderCart() {
+  const body = document.querySelector(".cart-body");
+  const totalEl = document.querySelector(".total strong");
+
+  if (!body) return;
+
+  body.innerHTML = "";
+
+  /* EMPTY CART */
+  if (cart.length === 0) {
+    body.innerHTML = `
+      <p class="text-center text-muted mt-4">
+        Cart is empty
+      </p>`;
+    totalEl.innerText = "₹0";
+    return;
+  }
+
+  let total = 0;
+
+  cart.forEach(i => {
+    total += i.price * i.qty;
+
+    body.innerHTML += `
+      <div class="cart-item">
+        <img src="${i.image}">
+        <div class="item-info">
+          <p>${i.name}</p>
+          <span>&#8377;${i.price}</span>
+        </div>
+        <div class="qty-box">
+          <button onclick="changeQty('${i.id}',-1)">−</button>
+          <span>${i.qty}</span>
+          <button onclick="changeQty('${i.id}',1)">+</button>
+        </div>
+      </div>`;
+  });
+
+totalEl.innerHTML = `&#8377;${total}`;}
+
+/* ================= BADGE ================= */
+function updateCartBadge() {
+  const badge = document.getElementById("cart-count");
+  if (!badge) return;
+
+  let qty = 0;
+  cart.forEach(i => qty += i.qty);
+
+  badge.innerText = qty;
+  badge.classList.toggle("hidden", qty === 0);
+}
+
+/* ================= UI ================= */
+function openCart() {
+  document.querySelector(".cart-drawer").classList.add("open");
+}
+
+function closeCart() {
+  document.querySelector(".cart-drawer").classList.remove("open");
+}
+
+function goToCheckout() {
+  window.location.href = "/checkout";
+}
+
+/* ================= LOAD ================= */
+window.addEventListener("load", () => {
+  renderCart();
+  updateCartBadge();
+});
+</script>

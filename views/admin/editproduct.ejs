@@ -1,0 +1,94 @@
+<% layout("layouts/boilerplate") %>
+
+<div class="max-w-2xl mx-auto p-6 bg-white rounded-xl shadow">
+
+  <h1 class="text-2xl font-bold mb-6">✏️ Update Product</h1>
+
+  <form
+    method="POST"
+    action="/admin/products/<%= item._id %>?_method=PUT"
+    enctype="multipart/form-data"
+  >
+
+    <!-- FOOD NAME -->
+    <div class="mb-4">
+      <label class="block mb-1 font-semibold">Food Name</label>
+      <input
+        type="text"
+        name="foodname"
+        value="<%= item.foodname %>"
+        class="w-full border px-4 py-2 rounded-lg"
+        required
+      >
+    </div>
+
+    <!-- PRICE -->
+    <div class="mb-4">
+      <label class="block mb-1 font-semibold">Price (₹)</label>
+      <input
+        type="number"
+        name="price"
+        value="<%= item.price %>"
+        class="w-full border px-4 py-2 rounded-lg"
+        required
+      >
+    </div>
+
+    <!-- CATEGORY -->
+    <div class="mb-4">
+      <label class="block mb-1 font-semibold">Category</label>
+      <select name="category" class="w-full border px-4 py-2 rounded-lg" required>
+        <option value="veg" <%= item.category === "veg" ? "selected" : "" %>>Veg</option>
+        <option value="nonveg" <%= item.category === "nonveg" ? "selected" : "" %>>Non-Veg</option>
+        <option value="drinks" <%= item.category === "drinks" ? "selected" : "" %>>Drinks</option>
+        <option value="dessert" <%= item.category === "dessert" ? "selected" : "" %>>Dessert</option>
+      </select>
+    </div>
+
+    <!-- IMAGE UPLOAD -->
+    <div class="mb-4">
+      <label class="block mb-1 font-semibold">Change Image</label>
+      <input
+        type="file"
+        name="image"
+        accept="image/*"
+        class="w-full border px-4 py-2 rounded-lg"
+      >
+      <p class="text-sm text-gray-500 mt-1">
+        Leave empty to keep existing image
+      </p>
+    </div>
+
+    <!-- IMAGE PREVIEW -->
+    <% if (item.image) { %>
+      <div class="mb-4">
+        <p class="font-semibold mb-1">Current Image</p>
+        <img
+          src="<%= item.image %>"
+          class="w-32 h-32 object-cover rounded-lg border"
+        >
+      </div>
+    <% } %>
+
+    <!-- DESCRIPTION -->
+    <div class="mb-6">
+      <label class="block mb-1 font-semibold">Description</label>
+      <textarea
+        name="description"
+        rows="4"
+        class="w-full border px-4 py-2 rounded-lg"
+      ><%= item.description %></textarea>
+    </div>
+
+    <!-- BUTTONS -->
+    <div class="flex gap-4">
+      <button class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700">
+        Update
+      </button>
+      <a href="/admin/products" class="px-6 py-2 rounded-lg border hover:bg-gray-100">
+         Cancel
+      </a>
+    </div>
+
+  </form>
+</div>

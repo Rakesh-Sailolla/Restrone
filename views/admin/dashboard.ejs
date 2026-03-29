@@ -1,0 +1,165 @@
+<% layout("layouts/boilerplate") %>
+
+<div class="flex min-h-screen bg-gray-100">
+
+  <!-- OVERLAY -->
+  <div id="overlay"
+       class="fixed inset-0 bg-black/40 hidden z-30 md:hidden"
+       onclick="toggleSidebar()"></div>
+
+  <!-- SIDEBAR -->
+  <aside id="sidebar"
+         class="fixed md:static z-40 w-64 bg-white shadow-lg h-full
+                transform -translate-x-full md:translate-x-0
+                transition-transform duration-300 ease-in-out">
+
+    <div class="p-6 text-xl font-bold border-b flex justify-between items-center">
+       Admin Panel
+      <button class="md:hidden text-2xl" onclick="toggleSidebar()">✖</button>
+    </div>
+
+    <nav class="mt-4 text-gray-700">
+
+      <a href="/admin"
+         class="flex gap-3 px-6 py-3 bg-blue-50 text-blue-600 font-semibold border-r-4 border-blue-600">
+         Dashboard
+      </a>
+
+      <a href="/admin/users"
+         class="flex gap-3 px-6 py-3 hover:bg-gray-100">
+        Users
+      </a>
+
+      <a href="/admin/orders"
+         class="flex gap-3 px-6 py-3 hover:bg-gray-100">
+        Orders
+      </a>
+
+      <a href="/admin/products"
+         class="flex gap-3 px-6 py-3 hover:bg-gray-100">
+        Food Items
+      </a>
+
+      <a href="/logout"
+         class="flex gap-3 px-6 py-3 text-red-600 hover:bg-red-50">
+        Logout
+      </a>
+
+    </nav>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="flex-1 p-4 md:p-6">
+
+    <!-- TOP BAR -->
+    <div class="flex justify-between items-center mb-6">
+
+      <div class="flex items-center gap-3">
+        <button class="md:hidden text-2xl" onclick="toggleSidebar()">☰</button>
+        <h1 class="text-xl md:text-2xl font-bold">Admin Dashboard</h1>
+      </div>
+
+      <div class="flex items-center gap-3">
+        <span class="hidden sm:block text-sm text-gray-600">
+          Welcome, <b><%= currentUser.username %></b>
+        </span>
+
+        <img
+          src="https://ui-avatars.com/api/?name=<%= currentUser.username %>&background=2563eb&color=fff"
+          class="w-10 h-10 rounded-full border shadow"
+          onerror="this.src='https://via.placeholder.com/40'">
+      </div>
+
+    </div>
+
+    <!-- STATS -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+
+      <div class="bg-white p-5 rounded-xl shadow hover:shadow-md transition">
+        <p class="text-sm text-gray-500">Users</p>
+        <p class="text-3xl font-bold mt-1"><%= usersCount %></p>
+      </div>
+
+      <div class="bg-white p-5 rounded-xl shadow hover:shadow-md transition">
+        <p class="text-sm text-gray-500">Orders</p>
+        <p class="text-3xl font-bold mt-1"><%= ordersCount %></p>
+      </div>
+
+      <div class="bg-white p-5 rounded-xl shadow hover:shadow-md transition">
+        <p class="text-sm text-gray-500">Products</p>
+        <p class="text-3xl font-bold mt-1"><%= productsCount %></p>
+      </div>
+
+      <div class="bg-white p-5 rounded-xl shadow hover:shadow-md transition">
+        <p class="text-sm text-gray-500">Revenue</p>
+        <p class="text-3xl font-bold text-green-600 mt-1">
+          &#8377;<%= totalRevenue %>
+        </p>
+      </div>
+
+    </div>
+
+    <!-- RECENT ORDERS -->
+    <div class="bg-white rounded-xl shadow overflow-x-auto">
+
+      <div class="p-5 border-b font-semibold">
+        Recent Orders
+      </div>
+
+      <table class="w-full text-sm min-w-[650px]">
+
+        <thead class="bg-gray-50">
+          <tr>
+            <th class="p-4 text-left">Order ID</th>
+            <th class="p-4 text-left">User</th>
+            <th class="p-4 text-left">Amount</th>
+            <th class="p-4 text-left">Status</th>
+          </tr>
+        </thead>
+
+        <tbody>
+
+          <% recentOrders.forEach(order => { %>
+
+            <tr class="border-t hover:bg-gray-50">
+
+              <td class="p-4 font-mono text-gray-700">
+                #<%= order._id.toString().slice(-6) %>
+              </td>
+
+              <td class="p-4">
+                <%= order.user?.username || "Guest" %>
+              </td>
+
+              <td class="p-4 font-semibold">
+                ₹<%= order.totalAmount %>
+              </td>
+
+              <td class="p-4">
+                <span class="px-3 py-1 rounded-full text-xs font-bold
+                  <%= order.orderStatus === "Delivered" ? "bg-green-100 text-green-700" :
+                      order.orderStatus === "Cancelled" ? "bg-red-100 text-red-700" :
+                      "bg-yellow-100 text-yellow-700" %>">
+                  <%= order.orderStatus %>
+                </span>
+              </td>
+
+            </tr>
+
+          <% }) %>
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+  </main>
+</div>
+
+<script>
+function toggleSidebar() {
+  document.getElementById("sidebar").classList.toggle("-translate-x-full");
+  document.getElementById("overlay").classList.toggle("hidden");
+}
+</script>

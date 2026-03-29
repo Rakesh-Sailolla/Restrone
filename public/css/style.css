@@ -1,0 +1,526 @@
+/* =====================================================
+   NAVBAR
+===================================================== */
+
+header {
+  position: sticky;
+  top: 0;
+  background: #ffffff;
+  z-index: 1030;
+}
+
+header > div {
+  min-height: 70px;
+}
+
+header a {
+  user-select: none;
+}
+
+#collapseMenu {
+  transition: all 0.3s ease;
+}
+
+@media (max-width: 1024px) {
+  #collapseMenu {
+    display: none;
+  }
+}
+
+#collapseMenu a:hover {
+  color: #2563eb;
+}
+
+/* dropdown animation */
+#userDropdown {
+  animation: dropdownFade 0.18s ease;
+  transform-origin: top right;
+}
+
+@keyframes dropdownFade {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+#cart-count {
+  min-width: 18px;
+  height: 18px;
+  line-height: 18px;
+  font-weight: 700;
+}
+
+header svg {
+  transition: 0.15s ease;
+}
+
+header svg:hover {
+  transform: scale(1.1);
+}
+
+/* =====================================================
+   GLOBAL
+===================================================== */
+
+body {
+  background: #fafafa;
+}
+
+a {
+  text-decoration: none;
+}
+
+/* =====================================================
+   HERO CAROUSEL
+===================================================== */
+
+.carousel {
+  margin-top: 70px;
+}
+
+.carousel-img {
+  height: 450px;
+  width: 100%;
+  object-fit: cover;
+  filter: brightness(70%);
+}
+
+@media (max-width: 768px) {
+  .carousel-img {
+    height: 240px;
+  }
+}
+
+.carousel-caption {
+  bottom: 25%;
+  background: rgba(0,0,0,0.45);
+  padding: 25px;
+  border-radius: 12px;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  background-color: #ffc107;
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  background-size: 60% 60%;
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+  opacity: 1;
+}
+
+/* =====================================================
+   PRODUCT SLIDER
+===================================================== */
+
+.food-box {
+  background: #fff;
+  border-radius: 16px;
+  padding: 10px;
+  text-align: center;
+  position: relative;
+  height: 100%;
+  box-shadow: 0 6px 18px rgba(0,0,0,.08);
+  transition: 0.3s ease;
+}
+
+.food-box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 18px 40px rgba(0,0,0,.15);
+}
+
+.food-img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+.food-box h6 {
+  font-size: 15px;
+  font-weight: 600;
+  margin-top: 6px;
+}
+
+.food-badge {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  background: #ff3b3b;
+  color: #fff;
+  padding: 4px 10px;
+  font-size: 11px;
+  border-radius: 30px;
+}
+
+.stars {
+  color: #ffc107;
+  font-size: 13px;
+  margin-bottom: 4px;
+}
+
+.price {
+  font-size: 16px;
+  font-weight: 700;
+  color: #e63946;
+}
+
+.food-btn {
+  background: #3b2a1a;
+  color: #fff;
+  border-radius: 25px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.food-btn:hover {
+  background: #000;
+}
+
+/* arrows */
+
+.slider-arrow {
+  background-color: #ffc107;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background-size: 60% 60%;
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+  opacity: 1;
+}
+
+/* =====================================================
+   MOBILE (3 COLUMNS)
+===================================================== */
+
+@media (max-width: 576px) {
+
+  .food-img {
+    height: 120px;
+  }
+
+  .food-box h6 {
+    font-size: 12px;
+  }
+
+  .price {
+    font-size: 14px;
+  }
+
+  .food-btn {
+    font-size: 11px;
+    padding: 6px;
+  }
+}
+
+/* =====================================================
+   REVIEWS
+===================================================== */
+
+.reviews-section {
+  background: #ffc107;
+  padding: 80px 15px;
+  margin-top: 70px;
+}
+
+.reviews-title {
+  font-size: 32px;
+  font-weight: 700;
+}
+
+.reviews-section .stars {
+  font-size: 22px;
+  letter-spacing: 4px;
+  color: #fff;
+}
+
+.review-text {
+  font-size: 20px;
+  max-width: 850px;
+  margin: auto;
+}
+
+.review-author {
+  font-weight: 600;
+}
+
+.review-arrow {
+  background: #fff;
+  border-radius: 50%;
+  width: 46px;
+  height: 46px;
+  border: 2px solid #000;
+}
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+.footer {
+  background: #fff;
+  border-top: 4px solid #ffc107;
+}
+
+.footer-links a {
+  color: #555;
+}
+
+.footer-links a:hover {
+  color: #ffc107;
+}
+
+.footer-bottom {
+  background: #ffc107;
+  font-weight: 500;
+}
+
+/* =====================================================
+   CART
+===================================================== */
+
+.cart-drawer {
+  z-index: 1050;
+}
+
+/* ===============================
+   SLIDER TRACK
+================================ */
+
+.product-track {
+  display: flex;
+  gap: 16px;
+}
+
+/* ===============================
+   EACH PRODUCT
+================================ */
+
+.product-slide {
+  flex: 0 0 25%;   /* desktop: 4 items */
+}
+
+/* ===============================
+   MOBILE → 1 ITEM ONLY
+================================ */
+
+@media (max-width: 576px) {
+
+  .product-track {
+    gap: 0;
+  }
+
+  .product-slide {
+    flex: 0 0 100%;
+  }
+
+  .food-box {
+    margin: 0 18px;
+  }
+}
+
+/* ===============================
+   TABLET → 2 ITEMS
+================================ */
+
+@media (min-width: 577px) and (max-width: 991px) {
+  .product-slide {
+    flex: 0 0 50%;
+  }
+}
+
+.view-all-btn {
+  font-size: 14px;
+  font-weight: 600;
+  color: #3b2a1a;
+  text-decoration: none;
+  border: 2px solid #3b2a1a;
+  padding: 6px 18px;
+  border-radius: 30px;
+  transition: 0.25s ease;
+}
+
+.view-all-btn:hover {
+  background: #3b2a1a;
+  color: #fff;
+}
+
+/* mobile polish */
+@media (max-width: 576px) {
+  .view-all-btn {
+    font-size: 13px;
+    padding: 5px 14px;
+  }
+}
+/* //index.ejs */
+/* ===============================
+   PRODUCT CARDS — INTRO STYLE
+================================ */
+
+.product-card {
+  transition: 0.3s ease;
+}
+
+/* card container */
+.product-card .card {
+  border-radius: 18px;
+  border: none;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+  transition: 0.3s ease;
+  height: 100%;
+}
+
+/* hover */
+.product-card .card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 45px rgba(0,0,0,0.18);
+}
+
+/* image */
+.product-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+/* body */
+.product-card .card-body {
+  padding: 14px 16px;
+}
+
+/* title */
+.product-card h6 {
+  font-size: 15px;
+  font-weight: 700;
+  margin-bottom: 2px;
+  color: #222;
+}
+
+/* category */
+.product-card small {
+  font-size: 12px;
+  letter-spacing: 0.3px;
+  color: #777;
+}
+
+/* price */
+.product-card span {
+  font-size: 16px;
+  font-weight: 800;
+  color: #3b2a1a;   /* ✅ intro color */
+}
+
+/* ===============================
+   BUTTON — SAME AS INTRO.EJS
+================================ */
+
+.product-card button {
+  background: #3b2a1a;
+  color: #fff;
+  border: none;
+  border-radius: 30px;
+  padding: 5px 16px;
+  font-size: 12px;
+  font-weight: 700;
+  transition: 0.25s ease;
+}
+
+.product-card button:hover {
+  background: #000;
+  color: #fff;
+  transform: scale(1.05);
+}
+
+/* ===============================
+   MOBILE OPTIMIZATION
+================================ */
+
+@media (max-width: 576px) {
+
+  .product-card img {
+    height: 140px;
+  }
+
+  .product-card h6 {
+    font-size: 13px;
+  }
+
+  .product-card span {
+    font-size: 14px;
+  }
+
+  .product-card button {
+    font-size: 11px;
+    padding: 4px 14px;
+  }
+}
+/* droppdwon css */
+/* ===============================
+   LIST STYLE DROPDOWN
+================================ */
+
+.list-dropdown {
+  box-shadow: 0 6px 18px rgba(0,0,0,.08);
+}
+
+/* list items */
+.list-dropdown li {
+  border-bottom: 1px solid #f1f1f1;
+}
+
+.list-dropdown li:last-child {
+  border-bottom: none;
+}
+
+/* links */
+.list-dropdown a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 13px 18px;
+  font-weight: 600;
+  color: #333;
+  transition: 0.2s ease;
+}
+
+/* hover */
+.list-dropdown a:hover {
+  background: #f8f9fa;
+}
+
+/* header */
+.list-dropdown .user-header {
+  background: #fafafa;
+  padding: 16px 18px;
+}
+
+.list-dropdown .user-header p:first-child {
+  font-size: 15px;
+  font-weight: 700;
+}
+
+/* mobile fix */
+@media (max-width: 640px) {
+  #userDropdown {
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%);
+    width: 92vw;
+    border-radius: 14px;
+  }
+}
+.logo1 span{
+  font-size:1rem;
+}

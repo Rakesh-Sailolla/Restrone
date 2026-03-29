@@ -1,0 +1,15 @@
+.login-box {
+  transition: 0.3s;
+}
+
+.login-box:hover {
+  transform: translateY(-4px);
+}
+
+.login-input {
+  transition: 0.2s;
+}
+
+.login-input:focus {
+  transform: scale(1.01);
+}

@@ -1,0 +1,8 @@
+.about-hero {
+  background: linear-gradient(135deg, #ffb703, #ff8800);
+  padding: 120px 20px;
+}
+
+.about-hero h1 {
+  font-size: 3rem;
+}

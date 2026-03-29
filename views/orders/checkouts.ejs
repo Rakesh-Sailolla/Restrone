@@ -1,0 +1,131 @@
+<% layout("layouts/boilerplate") %>
+
+<div class="container mt-4">
+  <h3>Checkout</h3>
+
+  <form id="checkoutForm">
+
+    <input type="hidden" id="cartInput">
+
+    <div class="mb-2">
+      <input id="name" class="form-control" placeholder="Name" required>
+    </div>
+
+    <div class="mb-2">
+      <input id="phone" class="form-control" placeholder="Phone" required>
+    </div>
+
+    <div class="mb-2">
+      <input id="street" class="form-control" placeholder="Street" required>
+    </div>
+
+    <div class="mb-2">
+      <input id="city" class="form-control" placeholder="City" required>
+    </div>
+
+    <div class="mb-2">
+      <input id="pincode" class="form-control" placeholder="Pincode" required>
+    </div>
+
+    <select id="paymentMethod" class="form-select mt-3">
+      <option value="COD">Cash on Delivery</option>
+      <option value="ONLINE">Online Payment</option>
+    </select>
+
+    <button class="btn btn-success mt-3">
+      Place Order
+    </button>
+  </form>
+</div>
+
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+<script>
+const cart = JSON.parse(localStorage.getItem("cart")) || [];
+const form = document.getElementById("checkoutForm");
+
+form.addEventListener("submit", async function (e) {
+  e.preventDefault();
+
+  const paymentMethod = document.getElementById("paymentMethod").value;
+
+  const formData = {
+    name: document.getElementById("name").value,
+    phone: document.getElementById("phone").value,
+    street: document.getElementById("street").value,
+    city: document.getElementById("city").value,
+    pincode: document.getElementById("pincode").value
+  };
+
+  // ====================
+  // CASH ON DELIVERY
+  // ====================
+  if (paymentMethod === "COD") {
+
+    await fetch("/orders/place", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        ...formData,
+        paymentMethod: "COD",
+        cart: JSON.stringify(cart)   
+      })
+    });
+
+    localStorage.removeItem("cart");
+    window.location.href = "/orders/my";
+    return;
+  }
+
+  // ====================
+  // ONLINE PAYMENT
+  // ====================
+  const totalAmount = cart.reduce(
+    (s, i) => s + i.price * i.qty, 0
+  );
+
+  const orderRes = await fetch("/razorpay/order", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ amount: totalAmount })
+  });
+
+  const order = await orderRes.json();
+
+  const options = {
+    key: "<%= process.env.RAZORPAY_KEY_ID %>",
+    amount: order.amount,
+    currency: "INR",
+    order_id: order.id,
+    name: "RestroOne",
+
+    handler: async function (response) {
+
+      const verify = await fetch("/razorpay/verify", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          razorpay_order_id: response.razorpay_order_id,
+          razorpay_payment_id: response.razorpay_payment_id,
+          razorpay_signature: response.razorpay_signature,
+          orderData: {
+            cart: JSON.stringify(cart),
+            address: formData
+          }
+        })
+      });
+
+      const result = await verify.json();
+
+      if (result.success) {
+        localStorage.removeItem("cart");
+        window.location.href = "/orders/my";   
+      } else {
+        alert("Payment verification failed");
+      }
+    }
+  };
+
+  new Razorpay(options).open();
+});
+</script>

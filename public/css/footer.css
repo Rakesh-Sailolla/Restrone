@@ -1,0 +1,32 @@
+.footer {
+  font-size: 14px;
+}
+
+.footer-links li {
+  margin-bottom: 10px;
+}
+
+.footer-links a {
+  color: #212529;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.footer-links a:hover {
+  color: #ffc107;
+  padding-left: 4px;
+  transition: 0.3s;
+}
+
+.footer i {
+  font-size: 14px;
+}
+
+.footer a i:hover {
+  color: #ffc107;
+  transition: 0.3s;
+}
+
+.footer-bottom {
+  font-size: 13px;
+}
